@@ -55,7 +55,7 @@ func main() {
 	args, min := filter(os.Args[1:], "-version")
 	if !version.AtLeast(min) {
 		fmt.Printf("protoc version not high enough to parse this proto file\n")
-		return
+		os.Exit(1)
 	}
 	gen := exec.Command("protoc", args...)
 	gen.Stderr = os.Stderr
